@@ -14,9 +14,12 @@ camera.set(cv2.CAP_PROP_POS_FRAMES, 500)
 #         cv2.waitKey(int(1000 / fps))
 
 i = 0
-while (camera.isOpened()):
+while (camera.isOpened()) :
     ret, frame = camera.read()
     if ret == False:
+        break
+
+    if i == 10:
         break
     cv2.imwrite('kang' + str(i) + '.jpg', frame)
     i += 1
