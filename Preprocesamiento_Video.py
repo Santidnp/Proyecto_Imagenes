@@ -1,6 +1,7 @@
 import cv2
 
-camera = cv2.VideoCapture('GOPR7428.MP4')
+#camera = cv2.VideoCapture('GOPR7428.MP4')
+camera = cv2.VideoCapture('Video_01.MP4')
 
 camera.set(cv2.CAP_PROP_POS_FRAMES, 500)
 #
@@ -14,6 +15,7 @@ camera.set(cv2.CAP_PROP_POS_FRAMES, 500)
 #         cv2.waitKey(int(1000 / fps))
 
 i = 0
+print(camera.isOpened())
 while (camera.isOpened()) :
     ret, frame = camera.read()
     if ret == False:
@@ -21,7 +23,7 @@ while (camera.isOpened()) :
 
     if i == 10:
         break
-    cv2.imwrite('kang' + str(i) + '.jpg', frame)
+    cv2.imwrite('Nados_' + str(i) + '.jpg', frame)
     i += 1
 
 camera.release()
