@@ -17,7 +17,7 @@ from IPython.display import display
 
 #MARCADORES VERDES 
 #imag1=cv2.imread("‪C:/Users/Laura/Downloads/nado1.jpg")
-imag1=cv2.imread(cwd+'/nado1.jpeg')
+imag1=cv2.imread(cwd+'/Nado_Lau.jfif')
 #imag1=cv2.imread("C:/Users/Laura/Documents/Tesis/kang4.jpg")
 
 plt.imshow(imag1)

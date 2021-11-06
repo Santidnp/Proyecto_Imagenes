@@ -1,7 +1,7 @@
 import cv2
 
 #camera = cv2.VideoCapture('GOPR7428.MP4')
-camera = cv2.VideoCapture('Video_01.MP4')
+camera = cv2.VideoCapture('Video_2.MP4')
 
 camera.set(cv2.CAP_PROP_POS_FRAMES, 500)
 #
@@ -23,7 +23,7 @@ while (camera.isOpened()) :
 
     if i == 10:
         break
-    cv2.imwrite('Nados_' + str(i) + '.jpg', frame)
+    cv2.imwrite('Nado_' + str(i) + '.jpg', frame)
     i += 1
 
 camera.release()
