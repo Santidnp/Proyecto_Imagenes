@@ -69,7 +69,8 @@ class Segmentacion:
             results = pose.process(image_rgb)
             #print("Pose landmarks:", results.pose_landmarks)
             if results.pose_landmarks is not None:
-                print(int(results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x * width))
+
+                #print(int(results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x * width))
                 x1 = int(results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].x * width)
                 y1 = int(results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER].y * height)
                 x2 = int(results.pose_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_ELBOW].x * width)
@@ -92,13 +93,15 @@ class Segmentacion:
                 # cv2.circle(image, (x4, y4), 6, (255, 191, 0), -1)
                 # cv2.circle(image, (x5, y5), 6, (255, 191, 0), -1)
                 # cv2.circle(image, (x6, y6), 6, (255, 191, 0), -1)
+                #print('Dentro del if: ',type(x3))
                 '''
                 mp_drawing.draw_landmarks(image, results.pose_landmarks,
                     mp_pose.POSE_CONNECTIONS,
                     mp_drawing.DrawingSpec(color=(128, 0, 250), thickness=2, circle_radius=3),
                     mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=2))
                 '''
-
+            #print('s: ',type(results.pose_landmarks))
+            #print('fuera del if: ',type(x3))
             #cv2.imshow("Imagen con angulo", image)
             #cv2.waitKey(0)
             imagenr = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -107,6 +110,7 @@ class Segmentacion:
 
             M = cv2.getRotationMatrix2D((ancho // 2, alto // 2), 270, 1)
             imagr = cv2.warpAffine(imagenr, M, (ancho, alto))
+            #print(x3)
 
             hombro = (x3, y3)
             codo = (x2, y2)
@@ -118,9 +122,10 @@ class Segmentacion:
 
             angleb = np.math.atan2(np.linalg.det([v4, v5]), np.dot(v4, v5))
             dangleb = abs(np.degrees(angleb))
+            imagr = cv2.cvtColor(imagr,cv2.COLOR_RGB2BGR)
 
-            cv2.imshow("Imagen con angulo", imagr)
-            cv2.waitKey(0)
+            #cv2.imshow("Imagen con angulo", imagr)
+            #cv2.waitKey(0)
 
             return imagr , dangleb
 

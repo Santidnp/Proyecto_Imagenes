@@ -2,6 +2,7 @@ import cv2
 import sys
 import os
 from Procesamiento_imagenes import *
+from Segmentos_Angulo import *
 
 if __name__ == '__main__':
     path = sys.argv[1]
@@ -25,12 +26,21 @@ if __name__ == '__main__':
     # visualization
     ret = True
     i = 0
+    Angulos = []
     while ret:
         ret, image = camera.read()
         #cv2.imshow("Image", image)
-        imagen = Reconocimiento(path=None, imagen=image).Transformacio()
-        cv2.imwrite(carp_videos + '/Frame' +str(i)+'.jpg', imagen)
+        #imagen = Reconocimiento(path=None, imagen=image).Transformacio()
+        try:
+            seg, angulo = Segmentacion(path=None, imagen=image).segmentacion_angulo()
+            cv2.imwrite(carp_videos + '/Frame' +str(i)+'.jpg', seg)
+            Angulos.append(angulo)
+        except UnboundLocalError:
+            print('seguir')
+
+
         i +=1
+
         #if ret:
             #cv2.imshow("Image", image)
             #cv2.waitKey(int(1000 / fps))

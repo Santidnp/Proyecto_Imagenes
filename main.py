@@ -2,7 +2,7 @@ from Procesamiento_imagenes import *
 from datetime import datetime
 from Segmentos_Angulo import *
 
-imag1=cv2.imread('Nados_7.jpg')
+imag1=cv2.imread('Nado_1.jpg')
 
 #imagen = Reconocimiento(path=None,imagen=imag1).Transformacio()
 #cv2.imshow("Imagen_final",imagen)
